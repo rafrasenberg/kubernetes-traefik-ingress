@@ -1,0 +1,16 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: whoami-cert
+  namespace: whoami
+  labels:
+    "use-http01-solver": "true"
+spec:
+  commonName: whoami.yourdomain.com
+  secretName: whoami-cert
+  dnsNames:
+    - whoami.yourdomain.com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
